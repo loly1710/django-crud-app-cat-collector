@@ -38,4 +38,13 @@ class Feeding(models.Model):
 
     cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
 
-    
+# Add the Toy model
+class Toy(models.Model):
+    name = models.CharField(max_length=50)
+    color = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('toy-detail', kwargs={'pk': self.id})    
